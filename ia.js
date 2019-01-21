@@ -87,31 +87,3 @@ class Network{
         return out;
     }
 }
-
-
-
-function frame(){
-    let erro;
-    for(let i=0;i<g.length;i++){
-        erro = n.compute(g[i])[0];
-        //erro = r[i]-end(erro);
-        erro = r[i] - erro;
-        n.ajust(erro, 0.00001);
-    }
-    setTimeout(frame,1);
-}
-
-        // obj , player
-var g = [[10,0],[0,10],[10,10],[0,0]];
-var r = [1,-1,0,0];
-
-var n = new Network(2, [5,1]);
-frame();
-
-window.addEventListener('keydown',function(event){
-    for(let i=0;i<g.length;i++){
-        let out = n.compute(g[i])[0];
-        console.log(g[i]);
-        console.log(end(out),out);
-    }
-});
